@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MuziQ</title>
+    <link rel="icon" href="Sources/Img/MuziQ.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <!-- This line imports the jQuery library from Google's servers for use in the web page -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- This line links to the Material Icons library from Google Fonts for use in the web page -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  </head>
+
+  <body>
+    <div class="login-su-layout" id="Login-form">
+      <div class="login-container">
+        <h2>Access Your Music World</h2>
+        <h1 class="logo-text">MuziQ</h1>
+        <!-- Login form -->
+        <form action="Login.php" method="post" action="Login.php" enctype=" multipart/form-data">
+          <div class="login-col">
+            <div class="input-col">
+              <p><i class="fas fa-envelope"></i><input type="email" name="email" class="login-input" placeholder="Email"
+                  required></p>
+            </div>
+            <div class="input-col">
+              <p><i class="fas fa-key"></i><input type="password" name="password" id="password" class="login-input"
+                  placeholder="Password" required></p>
+            </div>
+            <a href="Password-Forgot.php">
+              <h5>Forgot your password?</h5>
+            </a>
+          </div>
+          <input type="hidden" name="role" value="user">
+          <input type="submit" class="button-login" value="Login" name="submit">
+          <br><br>
+          <!-- Signup link -->
+          <label>Don't have an account?</label>
+          <button onclick="signup()" class="btn-create-new"><b>Sign up here</b></button><br><br>
+        </form>
+        <button onclick="admin()" class="btn-role"><b><i class='fas fa-user-cog'></i>Admin</b></button>
+      </div>
+    </div>
+
+    <div class="signup-layout" id="Signup-form">
+      <div class="signup-container">
+        <button class="back-button" onclick="back()"><i class="fas fa-arrow-left"></i> Back to Login</button>
+        <h2>Start Your Musical Journey</h2>
+        <h1 class="logo-text">MuziQ</h1>
+        <!-- Signup form -->
+        <form class="modal-content" method="post" action="Signup.php" enctype="multipart/form-data"
+          onsubmit="return validateForm()">
+          <div class="signup-col">
+            <div class="input-col">
+              <p><i class="fas fa-user" id="icon"></i><input type="text" placeholder="Username" name="name" required
+                  pattern="[a-zA-Z0-9]+" title="Only numbers and alphabets are allowed"></p>
+            </div>
+            <div class="input-col">
+              <p><i class="fas fa-envelope" id="icon"></i><input type="email" placeholder="Email" name="email" required>
+              </p>
+            </div>
+            <div class="input-col2">
+              <p>
+                <i class="fas fa-key" id="icon"></i>
+                <input type="password" placeholder="Password" id="enter-ps" onkeyup="validate();" name="pwd" required
+                  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8}$"
+                  title="Must contain at least 8 characters, including one each of: a number, an uppercase letter, a lowercase letter, and a special character." />
+                <span id="pwd-requirement"></span>
+              </p>
+            </div>
+            <div class="input-col3">
+              <p><i class="fas fa-shield-alt" id="icon"></i><input type="password" placeholder="Confirm Password"
+                  name="repeatPwd" id="repeat-ps" required>
+                <span id="confirmation"></span>
+              </p>
+            </div>
+            <input type="hidden" name="default-avatar" value="default.jpg" />
+            <input type="hidden" name="userbio" value="Music speaks louder than words. Bio coming soon!" />
+
+            <!-- Sign up button -->
+            <button type="submit" class="button-signup">Sign Up</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Admin layout -->
+    <div class="login-su-layout" id="Admin-form">
+      <div class="login-container">
+        <h2>Admin Sign In</h2>
+        <h1 class="logo-text">MuziQ</h1>
+        <!-- Admin form -->
+        <form action="Login.php" method="post" action="Login.php" enctype=" multipart/form-data">
+          <div class="login-col">
+            <div class="input-col">
+              <p><i class="fas fa-envelope"></i><input type="email" name="email" class="login-input" placeholder="Email"
+                  required></p>
+            </div>
+            <div class="input-col">
+              <p><i class="fas fa-key"></i><input type="password" name="password" id="password" class="login-input"
+                  placeholder="Password" required></p>
+            </div>
+            <a href="Admin-Password-Forgot.php">
+              <h5>Forgot your password?</h5>
+            </a>
+          </div>
+          <input type="hidden" name="role" value="admin">
+          <input type="submit" class="button-login" value="Login" name="submit">
+          <br><br>
+        </form>
+        <button onclick="user()" class="btn-role"><b><i class='fas fa-user'></i>User</b></button>
+      </div>
+    </div>
+
+    <script src="./login-script.js"></script>
+
+  </body>
+</html>
